@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.4
 
 Naming/FileName:
   Exclude:
@@ -17,10 +17,14 @@ Metrics/MethodLength:
 Style/Documentation:
   Enabled: false
 
-Style/MethodMissingSuper:
+Style/MissingSuper:
   Exclude:
     - lib/puma/metrics/parser.rb
 
 Style/MissingRespondToMissing:
+  Exclude:
+    - lib/puma/metrics/parser.rb
+
+Style/OptionalBooleanParameter:
   Exclude:
     - lib/puma/metrics/parser.rb
