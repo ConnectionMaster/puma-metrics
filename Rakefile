@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler/gem_tasks'
 require 'rake/testtask'
 
@@ -11,7 +13,7 @@ task :server do
   require 'puma'
   require 'puma/configuration'
   require 'puma/events'
-  require 'puma/plugin/metrics.rb'
+  require 'puma/plugin/metrics'
 
   configuration = Puma::Configuration.new do |config|
     config.bind 'tcp://127.0.0.1:0'
@@ -23,7 +25,7 @@ task :server do
     end
   end
 
-  events = Puma::Events.new STDOUT, STDERR
+  events = Puma::Events.new $stdout, $stderr
   launcher = Puma::Launcher.new(configuration, events: events)
   launcher.run
 end

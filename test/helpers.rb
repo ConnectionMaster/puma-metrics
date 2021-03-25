@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'prometheus/client'
 require 'puma'
@@ -60,7 +62,7 @@ module Helpers
 
   def wait_booted
     @wait.sysread 1
-    return unless @configuration.options[:workers] > 0
+    return unless @configuration.options[:workers].positive?
 
     # Wait for workers to report 'last_status'
     Timeout.timeout(15) do
