@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'puma/metrics/version'
 
 Gem::Specification.new do |spec|
+  spec.required_ruby_version = '>= 2.4.2'
   spec.authors       = ['Harm-Jan Blok']
   spec.description   = 'Puma plugin to export puma stats as prometheus metrics'
   spec.homepage      = 'https://github.com/harmjanblok/puma-metrics'

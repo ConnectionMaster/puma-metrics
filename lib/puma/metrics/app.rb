@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'prometheus/client/formats/text'
 require 'puma/metrics/parser'
@@ -6,7 +8,7 @@ module Puma
   module Metrics
     class App
       def initialize(launcher)
-        clustered = (launcher.options[:workers] || 0) > 0
+        clustered = (launcher.options[:workers] || 0).positive?
         @parser = Parser.new(clustered)
       end
 
@@ -20,7 +22,7 @@ module Puma
       end
 
       def parse
-        @parser.parse(JSON.parse(Puma.stats)
+        @parser.parse(JSON.parse(Puma.stats))
       end
     end
   end
